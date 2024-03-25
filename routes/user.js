@@ -18,7 +18,7 @@ router.post("/user/signup", async (req, res) => {
         if (existingUser) {
             return res.json("The email already exists.");
         }
-        if(!req.body.username){
+        if (!req.body.username) {
             return res.json("username not defined")
         }
         const newUser = new User({
@@ -68,6 +68,14 @@ router.post("/user/login", async (req, res) => {
             }
         }
 
+    } catch (error) {
+        res.status(400).json({ message: error.message });
+    }
+});
+
+router.post("/user/offer/publish", async (req, res) => {
+    try {
+        
     } catch (error) {
         res.status(400).json({ message: error.message });
     }
